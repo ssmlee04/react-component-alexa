@@ -104,9 +104,9 @@ function (_React$Component) {
         }, btnText)));
       }
 
-      if (!profile || !profile.alexa || !profile.alexa.data || !profile.alexa.data.length) return null;
+      if (!profile || !profile.alexa || !profile.alexa.arr || !profile.alexa.arr.length) return null;
       var data = {
-        labels: profile.alexa.data.map(function (d) {
+        labels: profile.alexa.arr.map(function (d) {
           return _dayjs["default"].utc(d.ts).format('YYYYMM');
         }),
         datasets: [{
@@ -119,10 +119,10 @@ function (_React$Component) {
           borderWidth: 1,
           pointRadius: 2,
           pointHoverRadius: 2,
-          data: profile.alexa.data.map(function (d) {
+          data: profile.alexa.arr.map(function (d) {
             return d.rank;
           }),
-          label: 'Percent of Institution Owned'
+          label: 'Website Ranking'
         }]
       };
       var options = {
@@ -191,7 +191,7 @@ function (_React$Component) {
           fontSize: 16,
           color: 'red'
         }
-      }, "\u2764\uFE0F, datasource: alexa.com")));
+      }, "\u2764\uFE0F"), ", datasource: alexa.com"));
     }
   }]);
 
