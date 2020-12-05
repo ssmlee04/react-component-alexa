@@ -144,14 +144,10 @@ function (_React$Component) {
             display: true,
             position: 'left',
             id: '1',
-            gridLines: {
-              display: false
-            },
             labels: {
               show: true
             },
             ticks: {
-              fontColor: 'darkred',
               fontSize: 10,
               callback: function callback(label, index, labels) {
                 return Math.floor(label);
@@ -173,7 +169,7 @@ function (_React$Component) {
         }
       }, profile.ticker, " - ", profile.name, " ", _react["default"].createElement("span", {
         className: "green"
-      }, "Website Ranking")), _react["default"].createElement(_reactChartjs.Bar, {
+      }, "World Website Ranking")), _react["default"].createElement(_reactChartjs.Bar, {
         data: data,
         height: 170,
         options: options
