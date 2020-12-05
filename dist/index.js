@@ -105,6 +105,7 @@ function (_React$Component) {
       }
 
       if (!profile || !profile.alexa || !profile.alexa.arr || !profile.alexa.arr.length) return null;
+      profile.alexa.arr.reverse();
       var data = {
         labels: profile.alexa.arr.map(function (d) {
           return _dayjs["default"].utc(d.ts).format('YYYYMM');

@@ -45,6 +45,7 @@ export class AlexaRanks extends React.Component {
     }
 
     if (!profile || !profile.alexa || !profile.alexa.arr || !profile.alexa.arr.length) return null;
+    profile.alexa.arr.reverse()
     const data = {
       labels: profile.alexa.arr.map(d => dayjs.utc(d.ts).format('YYYYMM')),
       datasets: [{
