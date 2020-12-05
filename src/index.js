@@ -85,6 +85,7 @@ export class AlexaRanks extends React.Component {
                   show: true
                 },
                 ticks: {
+                  reverse: true,
                   fontSize: 10,
                     callback: function(label, index, labels) {
                       return Math.floor(label);

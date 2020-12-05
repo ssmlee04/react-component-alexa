@@ -149,6 +149,7 @@ function (_React$Component) {
               show: true
             },
             ticks: {
+              reverse: true,
               fontSize: 10,
               callback: function callback(label, index, labels) {
                 return Math.floor(label);
