@@ -116,7 +116,7 @@ function (_React$Component) {
           fill: false,
           backgroundColor: 'darkred',
           borderColor: 'darkred',
-          lineTension: 0,
+          lineTension: 0.3,
           borderWidth: 1,
           pointRadius: 2,
           pointHoverRadius: 2,
