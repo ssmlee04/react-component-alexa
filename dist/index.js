@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = exports.AlexaRanks = void 0;
 
+var _lodash = _interopRequireDefault(require("lodash"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _reactChartjs = require("react-chartjs-2");
@@ -105,9 +107,13 @@ function (_React$Component) {
       }
 
       if (!profile || !profile.alexa || !profile.alexa.arr || !profile.alexa.arr.length) return null;
-      profile.alexa.arr.reverse();
+
+      var arr = _lodash["default"].sortBy(profile.alexa.arr, function (d) {
+        return d.ts;
+      });
+
       var data = {
-        labels: profile.alexa.arr.map(function (d) {
+        labels: arr.map(function (d) {
           return _dayjs["default"].utc(d.ts).format('YYYYMM');
         }),
         datasets: [{
@@ -120,7 +126,7 @@ function (_React$Component) {
           borderWidth: 1.5,
           pointRadius: 4,
           pointHoverRadius: 6,
-          data: profile.alexa.arr.map(function (d) {
+          data: arr.map(function (d) {
             return d.rank;
           }),
           label: 'Website Ranking'

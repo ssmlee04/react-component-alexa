@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React from "react";
 import { Bar } from 'react-chartjs-2';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -45,9 +46,9 @@ export class AlexaRanks extends React.Component {
     }
 
     if (!profile || !profile.alexa || !profile.alexa.arr || !profile.alexa.arr.length) return null;
-    profile.alexa.arr.reverse();
+    const arr = _.sortBy(profile.alexa.arr, d => d.ts);
     const data = {
-      labels: profile.alexa.arr.map(d => dayjs.utc(d.ts).format('YYYYMM')),
+      labels: arr.map(d => dayjs.utc(d.ts).format('YYYYMM')),
       datasets: [{
         yAxisID: '1',
         type: 'line',
@@ -58,7 +59,7 @@ export class AlexaRanks extends React.Component {
         borderWidth: 1.5,
         pointRadius: 4,
         pointHoverRadius: 6,
-        data: profile.alexa.arr.map(d => d.rank),
+        data: arr.map(d => d.rank),
         label: 'Website Ranking'
       }]
     };
