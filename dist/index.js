@@ -113,13 +113,13 @@ function (_React$Component) {
         datasets: [{
           yAxisID: '1',
           type: 'line',
-          fill: false,
+          fill: 'start',
           backgroundColor: dataColor,
           borderColor: dataColor,
           lineTension: 0.3,
-          borderWidth: 1.5,
-          pointRadius: 4,
-          pointHoverRadius: 6,
+          borderWidth: 1,
+          pointRadius: 2.5,
+          pointHoverRadius: 5,
           data: arr.map(function (d) {
             return d.rank;
           }),
