@@ -100,7 +100,7 @@ function (_React$Component) {
       }
 
       if (!profile || !profile.alexa || !profile.alexa.arr || !profile.alexa.arr.length) return null;
-      var dataColor = theme === 'light' ? 'rgba(140, 0, 0, 0.5)' : 'rgba(255, 64, 64, 0.8)';
+      var dataColor = theme === 'light' ? 'rgba(140, 0, 0, 0.5)' : 'rgba(222, 64, 64, 0.5)';
 
       var arr = _lodash["default"].sortBy(profile.alexa.arr, function (d) {
         return d.ts;

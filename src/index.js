@@ -38,7 +38,7 @@ export class AlexaRanks extends React.Component {
     }
 
     if (!profile || !profile.alexa || !profile.alexa.arr || !profile.alexa.arr.length) return null;
-    const dataColor = theme === 'light' ? 'rgba(140, 0, 0, 0.5)' : 'rgba(255, 64, 64, 0.8)';
+    const dataColor = theme === 'light' ? 'rgba(140, 0, 0, 0.5)' : 'rgba(222, 64, 64, 0.5)';
     const arr = _.sortBy(profile.alexa.arr, d => d.ts);
     const data = {
       labels: arr.map(d => dayjs.utc(d.ts).format('YYYYMM')),
