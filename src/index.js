@@ -38,7 +38,7 @@ export class AlexaRanks extends React.Component {
     }
 
     if (!profile || !profile.alexa || !profile.alexa.arr || !profile.alexa.arr.length) return null;
-    const dataColor = theme === 'light' ? 'rgba(140, 0, 0, 0.5)' : 'rgba(170, 100, 112, 0.5)';
+    const dataColor = theme === 'light' ? 'rgba(140, 0, 0, 0.5)' : 'rgba(255, 64, 64, 0.8)';
     const arr = _.sortBy(profile.alexa.arr, d => d.ts);
     const data = {
       labels: arr.map(d => dayjs.utc(d.ts).format('YYYYMM')),
@@ -57,6 +57,7 @@ export class AlexaRanks extends React.Component {
       }]
     };
     const fontColor = theme === 'light' ? '#222222' : '#dddddd';
+    const gridColor = theme === 'light' ? 'rgba(80, 80, 80, 0.1)' : 'rgba(255, 255, 255, 0.2)';
     const options = {
       legend: {
         display: false,
@@ -72,25 +73,31 @@ export class AlexaRanks extends React.Component {
             fontSize: 12,
             fontColor,
           },
+          gridLines: {
+            color: gridColor
+          },
           barPercentage: 0.4
         }],
         yAxes: [{
-                type: 'linear',
-                display: true,
-                position: 'left',
-                id: '1',
-                labels: {
-                  show: true
-                },
-                ticks: {
-                  reverse: true,
-                  fontSize: 12,
-                  fontColor,
-                    callback: function(label, index, labels) {
-                      return Math.floor(label);
-                    }
-                },
-              }]
+          type: 'linear',
+          display: true,
+          position: 'left',
+          id: '1',
+          labels: {
+            show: true
+          },
+          gridLines: {
+            color: gridColor
+          },
+          ticks: {
+            reverse: true,
+            fontSize: 12,
+            fontColor,
+              callback: function(label, index, labels) {
+                return Math.floor(label);
+              }
+          },
+        }]
       },
     };
 

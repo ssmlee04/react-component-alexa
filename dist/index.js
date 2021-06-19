@@ -100,7 +100,7 @@ function (_React$Component) {
       }
 
       if (!profile || !profile.alexa || !profile.alexa.arr || !profile.alexa.arr.length) return null;
-      var dataColor = theme === 'light' ? 'rgba(140, 0, 0, 0.5)' : 'rgba(170, 100, 112, 0.5)';
+      var dataColor = theme === 'light' ? 'rgba(140, 0, 0, 0.5)' : 'rgba(255, 64, 64, 0.8)';
 
       var arr = _lodash["default"].sortBy(profile.alexa.arr, function (d) {
         return d.ts;
@@ -127,6 +127,7 @@ function (_React$Component) {
         }]
       };
       var fontColor = theme === 'light' ? '#222222' : '#dddddd';
+      var gridColor = theme === 'light' ? 'rgba(80, 80, 80, 0.1)' : 'rgba(255, 255, 255, 0.2)';
       var options = {
         legend: {
           display: false,
@@ -142,6 +143,9 @@ function (_React$Component) {
               fontSize: 12,
               fontColor: fontColor
             },
+            gridLines: {
+              color: gridColor
+            },
             barPercentage: 0.4
           }],
           yAxes: [{
@@ -151,6 +155,9 @@ function (_React$Component) {
             id: '1',
             labels: {
               show: true
+            },
+            gridLines: {
+              color: gridColor
             },
             ticks: {
               reverse: true,
