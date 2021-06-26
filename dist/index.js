@@ -111,15 +111,17 @@ function (_React$Component) {
           return _dayjs["default"].utc(d.ts).format('YYYYMM');
         }),
         datasets: [{
+          borderCapStyle: 'butt',
+          pointBorderWidth: 1,
           yAxisID: '1',
           type: 'line',
           fill: 'start',
           backgroundColor: dataColor,
-          borderColor: dataColor,
+          borderColor: 'rgba(140, 0, 0, 0.8)',
           lineTension: 0.3,
           borderWidth: 1,
-          pointRadius: 2.5,
-          pointHoverRadius: 5,
+          pointRadius: 3,
+          pointHoverRadius: 2,
           data: arr.map(function (d) {
             return d.rank;
           }),
@@ -183,7 +185,7 @@ function (_React$Component) {
         }
       }, profile.ticker, " - ", profile.name, "\xA0\xA0", _react["default"].createElement("span", {
         className: "theme-green-".concat(theme)
-      }, "World Website Ranking")), _react["default"].createElement(_reactChartjs.Bar, {
+      }, "World Website Ranking Analysis")), _react["default"].createElement(_reactChartjs.Bar, {
         data: data,
         height: 150,
         options: options
