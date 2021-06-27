@@ -117,7 +117,7 @@ function (_React$Component) {
           type: 'line',
           fill: 'start',
           backgroundColor: dataColor,
-          borderColor: 'rgba(140, 0, 0, 0.8)',
+          borderColor: '#A52A2A',
           lineTension: 0.3,
           borderWidth: 1,
           pointRadius: 3,
