@@ -117,7 +117,7 @@ function (_React$Component) {
           type: 'line',
           fill: 'start',
           backgroundColor: dataColor,
-          borderColor: '#A52A2A',
+          borderColor: dataColor,
           lineTension: 0.3,
           borderWidth: 1,
           pointRadius: 3,
@@ -185,7 +185,7 @@ function (_React$Component) {
         }
       }, profile.ticker, " - ", profile.name, "\xA0\xA0", _react["default"].createElement("span", {
         className: "theme-green-".concat(theme)
-      }, "World Website Ranking Analysis")), _react["default"].createElement(_reactChartjs.Bar, {
+      }, "Website Ranking Analysis")), _react["default"].createElement(_reactChartjs.Bar, {
         data: data,
         height: 150,
         options: options
