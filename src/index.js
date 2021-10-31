@@ -38,8 +38,9 @@ export class AlexaRanks extends React.Component {
     }
 
     if (!profile || !profile.alexa || !profile.alexa.arr || !profile.alexa.arr.length) return null;
-    const dataColor = theme === 'light' ? 'rgba(140, 0, 0, 0.3)' : 'rgba(222, 64, 64, 0.5)';
+    const dataColor = theme === 'light' ? 'rgba(175, 45, 30, 0.4)' : 'rgba(225, 85, 85, 0.6)';
     const arr = _.sortBy(profile.alexa.arr, d => d.ts);
+    const ranks = arr.map(d => d.rank);
     const data = {
       labels: arr.map(d => dayjs.utc(d.ts).format('YYYYMM')),
       datasets: [{
@@ -54,10 +55,11 @@ export class AlexaRanks extends React.Component {
         borderWidth: 1,
         pointRadius: 3,
         pointHoverRadius: 2,
-        data: arr.map(d => d.rank),
+        data: ranks,
         label: 'Website Ranking'
       }]
     };
+    const yAxisMax = Math.max(...ranks) * 1.1 + 5;
     const fontColor = theme === 'light' ? '#444444' : '#dddddd';
     const gridColor = theme === 'light' ? 'rgba(80, 80, 80, 0.1)' : 'rgba(255, 255, 255, 0.2)';
     const options = {
@@ -94,6 +96,7 @@ export class AlexaRanks extends React.Component {
           ticks: {
             reverse: true,
             fontSize: 12,
+            max: yAxisMax,
             fontColor,
               callback: function(label, index, labels) {
                 return Math.floor(label);
@@ -105,7 +108,7 @@ export class AlexaRanks extends React.Component {
 
     return (
       <div style={{ width: '100%', padding: 5, fontSize: 12 }}>
-        <div className={`theme-darkred-${theme} mb-2`} style={{ fontWeight: 'bold' }}>{profile.ticker} - {profile.name}&nbsp;<span className={`theme-green-${theme}`}>Website Ranking Analysis</span></div>
+        <div className={`theme-darkred-${theme} mb-2`} style={{ fontWeight: 'bold' }}>{profile.ticker} - {profile.name}&nbsp;<span className={`theme-green-${theme}`}>World Website Ranking</span></div>
         <Bar data={data} height={150} options={options} />
         <div style={{ fontSize: 12, padding: 5, paddingTop: 2 }}>Crafted by <a href='https://twitter.com/tradeideashq' target='_blank' className={`theme-darkred-${theme}`}>@tradeideashq</a> with <span style={{ fontSize: 16, color: 'red' }}>💡</span></div>
       </div>

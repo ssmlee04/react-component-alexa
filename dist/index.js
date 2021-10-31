@@ -21,6 +21,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -100,12 +108,15 @@ function (_React$Component) {
       }
 
       if (!profile || !profile.alexa || !profile.alexa.arr || !profile.alexa.arr.length) return null;
-      var dataColor = theme === 'light' ? 'rgba(140, 0, 0, 0.3)' : 'rgba(222, 64, 64, 0.5)';
+      var dataColor = theme === 'light' ? 'rgba(175, 45, 30, 0.4)' : 'rgba(225, 85, 85, 0.6)';
 
       var arr = _lodash["default"].sortBy(profile.alexa.arr, function (d) {
         return d.ts;
       });
 
+      var ranks = arr.map(function (d) {
+        return d.rank;
+      });
       var data = {
         labels: arr.map(function (d) {
           return _dayjs["default"].utc(d.ts).format('YYYYMM');
@@ -122,12 +133,11 @@ function (_React$Component) {
           borderWidth: 1,
           pointRadius: 3,
           pointHoverRadius: 2,
-          data: arr.map(function (d) {
-            return d.rank;
-          }),
+          data: ranks,
           label: 'Website Ranking'
         }]
       };
+      var yAxisMax = Math.max.apply(Math, _toConsumableArray(ranks)) * 1.1 + 5;
       var fontColor = theme === 'light' ? '#444444' : '#dddddd';
       var gridColor = theme === 'light' ? 'rgba(80, 80, 80, 0.1)' : 'rgba(255, 255, 255, 0.2)';
       var options = {
@@ -164,6 +174,7 @@ function (_React$Component) {
             ticks: {
               reverse: true,
               fontSize: 12,
+              max: yAxisMax,
               fontColor: fontColor,
               callback: function callback(label, index, labels) {
                 return Math.floor(label);
@@ -185,7 +196,7 @@ function (_React$Component) {
         }
       }, profile.ticker, " - ", profile.name, "\xA0", _react["default"].createElement("span", {
         className: "theme-green-".concat(theme)
-      }, "Website Ranking Analysis")), _react["default"].createElement(_reactChartjs.Bar, {
+      }, "World Website Ranking")), _react["default"].createElement(_reactChartjs.Bar, {
         data: data,
         height: 150,
         options: options
